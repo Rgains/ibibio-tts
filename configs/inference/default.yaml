@@ -1,0 +1,4 @@
+inference:
+  language: ibb
+  sample_rate: 24000
+  supplied_text_only: true

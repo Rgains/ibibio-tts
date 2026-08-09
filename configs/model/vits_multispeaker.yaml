@@ -1,0 +1,16 @@
+model:
+  architecture: vits
+  language: ibb
+  text_representation: characters
+  multispeaker: true
+  speaker_embedding_dimension: 128
+audio:
+  sample_rate: 24000
+  channels: 1
+training:
+  precision: bf16
+  seed: 20260804
+  gradient_accumulation_steps: 4
+  checkpointing: true
+  resume_supported: true
+  validation_enabled: true

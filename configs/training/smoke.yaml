@@ -1,0 +1,6 @@
+training:
+  clips: 200
+  precision: bf16
+  seed: 20260804
+  checkpoint_count: 1
+  generated_samples: 3

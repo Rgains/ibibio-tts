@@ -1,0 +1,16 @@
+.env
+.venv/
+data/raw/
+data/interim/
+data/processed/
+artifacts/
+*.wav
+*.mp3
+*.tar.gz
+*.zip
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.uv-cache/
+.DS_Store

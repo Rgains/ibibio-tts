@@ -1,0 +1,6 @@
+model:
+  architecture: vits
+  language: ibb
+  text_representation: characters
+  multispeaker: false
+  initialization: vits_ibb_cv_multispeaker_v1

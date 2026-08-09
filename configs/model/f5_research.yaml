@@ -1,0 +1,5 @@
+model:
+  architecture: f5-tts
+  language: ibb
+  experiment: f5_ibb_cv_research_v1
+  checkpoint: null

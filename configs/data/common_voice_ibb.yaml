@@ -1,0 +1,21 @@
+dataset:
+  name: Common Voice Scripted Speech
+  version: "26.0"
+  release_date: "2026-06-12"
+  dataset_id: cmqiohial00zgnq07ybhhu7ni
+  locale: ibb
+  licence: CC0-1.0
+  archive: data/raw/common_voice_ibb/common-voice-scripted-speech-26-0-ibibio-7ed511b3.tar.gz
+  extracted_root: data/raw/common_voice_ibb/cv-corpus-26.0-2026-06-12/ibb
+  validated_tsv: data/raw/common_voice_ibb/cv-corpus-26.0-2026-06-12/ibb/validated.tsv
+audio:
+  sample_rate: 24000
+  channels: 1
+  encoding: PCM_S16LE
+  minimum_duration_seconds: 1.0
+  maximum_duration_seconds: 15.0
+splits:
+  train: 0.90
+  validation: 0.05
+  test: 0.05
+  seed: 20260804

@@ -1,0 +1,5 @@
+model:
+  architecture: mms-tts
+  language: ibb
+  checkpoint: null
+  require_exact_language_checkpoint: true

@@ -1,0 +1,10 @@
+datasets:
+  - name: Common Voice Scripted Speech
+    version: "26.0"
+    locale: ibb
+    dataset_id: cmqiohial00zgnq07ybhhu7ni
+    licence: CC0-1.0
+    source: Mozilla Data Collective
+    archive: common-voice-scripted-speech-26-0-ibibio-7ed511b3.tar.gz
+    checksum_file: reports/common_voice_ibb_archive.sha256
+    redistribution: prohibited_by_project_policy

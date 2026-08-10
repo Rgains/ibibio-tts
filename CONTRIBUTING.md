@@ -7,6 +7,8 @@
 - Never transliterate text to ASCII silently.
 - Never attempt to identify Common Voice speakers.
 - Never commit source dataset audio.
+- Never put real secrets in `.env.example`; it is a committed template and
+  must only contain placeholders. Real values belong in `.env` (git-ignored).
 - Use validated Common Voice clips first.
 - Preserve dataset version, licence, and provenance.
 - Prevent sentence and audio leakage across data splits.

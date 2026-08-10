@@ -25,6 +25,23 @@ dev = [
   "ruff>=0.11",
   "types-pyyaml>=6.0",
 ]
+train = [
+  "torch==2.8.0",
+  "torchaudio==2.8.0",
+  "coqui-tts==0.27.5",
+  "transformers==4.57.6",
+]
+train-f5 = [
+  "torch==2.8.0",
+  "torchaudio==2.8.0",
+  "f5-tts==1.1.22",
+  "datasets>=3.0",
+]
+demo = [
+  "streamlit>=1.38",
+  "soundfile>=0.12",
+  "huggingface-hub>=0.24",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ibibio_tts"]
@@ -44,3 +61,7 @@ select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 python_version = "3.11"
 strict = true
 packages = ["ibibio_tts"]
+
+[[tool.mypy.overrides]]
+module = ["TTS.*", "huggingface_hub.*"]
+ignore_missing_imports = true

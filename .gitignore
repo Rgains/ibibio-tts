@@ -14,3 +14,6 @@ __pycache__/
 .mypy_cache/
 .uv-cache/
 .DS_Store
+model_export/
+config.runtime.json
+.streamlit/secrets.toml

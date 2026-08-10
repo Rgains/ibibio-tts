@@ -1,0 +1,43 @@
+{
+  "seed": 20260804,
+  "fractions": {
+    "train": 0.9,
+    "validation": 0.05,
+    "test": 0.05
+  },
+  "split_unit": "cluster of rows sharing normalized_text or audio_sha256",
+  "usable_rows_considered": 3071,
+  "clusters": 996,
+  "splits": {
+    "train": {
+      "rows": 2765,
+      "hours": 6.91727,
+      "speakers": 17,
+      "unique_sentences": 894
+    },
+    "validation": {
+      "rows": 153,
+      "hours": 0.38429,
+      "speakers": 15,
+      "unique_sentences": 50
+    },
+    "test": {
+      "rows": 153,
+      "hours": 0.37391,
+      "speakers": 15,
+      "unique_sentences": 52
+    }
+  },
+  "leakage_checks": {
+    "normalized_text_overlap": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    },
+    "audio_sha256_overlap": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    }
+  }
+}

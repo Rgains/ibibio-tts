@@ -1,0 +1,21 @@
+{
+  "clips_total": 3106,
+  "decode_ok": 3106,
+  "decode_failed": 0,
+  "usable_clips": 3071,
+  "usable_definition": "decode ok and 1-15 second duration",
+  "usable_hours": 7.67547,
+  "source_sample_rate_distribution": {
+    "32000": 3106
+  },
+  "source_channel_distribution": {
+    "1": 3106
+  },
+  "duration_ms_distribution": {
+    "minimum": 1800.0,
+    "median": 9000.0,
+    "maximum": 21420.0
+  },
+  "duplicate_audio_content": 0,
+  "decode_failures": []
+}

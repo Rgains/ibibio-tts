@@ -1,0 +1,10 @@
+training:
+  train_split: full
+  validation_split: full
+  precision: bf16
+  seed: 20260804
+  batch_size: 12
+  epochs: 150
+  save_step: 1000
+  checkpoint_count: 1
+  generated_samples: 5

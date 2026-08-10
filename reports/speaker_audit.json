@@ -1,0 +1,114 @@
+{
+  "total_speakers": 17,
+  "speakers_with_usable_audio": 17,
+  "strongest_speaker_usable_hours": 1.29058,
+  "total_usable_hours": 7.67547,
+  "ranking": [
+    {
+      "speaker_id": "fa2d624dcf73f651b93a99ecc7bdc75d2e1f2342fde71b37020249f484392f56c2b3f92c3e86af34b7725e5d434ad5ca4d17633720591762126703b0cbe3d140",
+      "usable_clips": 504,
+      "usable_hours": 1.29058,
+      "unique_sentences": 504
+    },
+    {
+      "speaker_id": "1923020c03c38852c2065a10979abf354c9b532172fbb4b282ea9d1a0d17a7d016cf59670251d22c198afc95d3703b1fd529422319bdb457af45e556a8403944",
+      "usable_clips": 509,
+      "usable_hours": 1.23133,
+      "unique_sentences": 509
+    },
+    {
+      "speaker_id": "cdff6d2a5e72d0c78082078fcb1d11911496b785a64e37d7ce329b06485bbeb1dbad34acfa53afa9533bef498f987106eff0307a8d9f948c83ae97aefe497249",
+      "usable_clips": 478,
+      "usable_hours": 1.18924,
+      "unique_sentences": 478
+    },
+    {
+      "speaker_id": "0f1c98353488ba2816ec408190168015b26961b0bfac151e8f7e2b37b4cf8419cc5df2a300ada99d77211c721e1ce37622d474351d2806cdc36eb22ba00c2aae",
+      "usable_clips": 263,
+      "usable_hours": 0.67396,
+      "unique_sentences": 263
+    },
+    {
+      "speaker_id": "face6f3e8022d761a3f8e810711013b6544a7009a2993a82c129eb1cf703137a45650b8b5035c0866e04bf2ab286c7d9c9c5d7f1a0d7ec4d6f04467747995568",
+      "usable_clips": 247,
+      "usable_hours": 0.59638,
+      "unique_sentences": 247
+    },
+    {
+      "speaker_id": "970ba7cf751778d1d05428592c0c0df287f799797c14c4881d7deba7e2ca51c708317650474601d1b57010d39c4b10d4bfea65a416d71df7bc6069fe66722c3b",
+      "usable_clips": 209,
+      "usable_hours": 0.56306,
+      "unique_sentences": 209
+    },
+    {
+      "speaker_id": "e6b48f6601b7f99f1471d9e2fd243aa81378cd3c64407aa02a059b279dbf5839fe96003cb48b8ff4b7152fdcf3417ab0eb804c34b4c999d1534256218a3f4de2",
+      "usable_clips": 192,
+      "usable_hours": 0.49408,
+      "unique_sentences": 192
+    },
+    {
+      "speaker_id": "90648350c733573f0bb9d48cc60b81037fb57acae4d3dbfa0443b2dc5559c20fc4e15849e369f4b4a1fb7a3f3dbf332e135fd8fd85816b7c76881f71a9a7751c",
+      "usable_clips": 199,
+      "usable_hours": 0.46692,
+      "unique_sentences": 199
+    },
+    {
+      "speaker_id": "ddefd95daba74064b77e8d0a40de05da4b14262680e4cd0f8068db3ffa2279fbe84ccfef1cb5d70a6a899cd1699d9dd5c363262c6fce60e54a4978ffb7165414",
+      "usable_clips": 164,
+      "usable_hours": 0.44863,
+      "unique_sentences": 164
+    },
+    {
+      "speaker_id": "dc500282daba015d5244a7a92c0a7e62fb97daba35cfdc4f1040345d1b2b6789731d29b1cbd71adc29b30b3c905fe2702c05326547f8605600f4ac35b85104fd",
+      "usable_clips": 122,
+      "usable_hours": 0.28707,
+      "unique_sentences": 122
+    },
+    {
+      "speaker_id": "534e8d3b1d255a0d5a5bbe99a6f56a435a970a899b39eb9f5f3da098caf38b209441f110214ea3f353de8895e0d54773a7dfac7ae797bccc83674ac951eb4cc0",
+      "usable_clips": 48,
+      "usable_hours": 0.12018,
+      "unique_sentences": 48
+    },
+    {
+      "speaker_id": "435fdbf9a360a502064a4925e12a5d85c13479a28f5de7de85a5724af83b2242c948f63dbfe295b3ffaef284b4316f105238a2dc4eedc03db09c067ba2248e7e",
+      "usable_clips": 35,
+      "usable_hours": 0.07601,
+      "unique_sentences": 35
+    },
+    {
+      "speaker_id": "13405544526443fdce93804d3a3d0c15ddabcf6803248aaffbbf868a262d6be439d42a13a44cd8182fa730a8f024ca353cef8aed6300f5e07533fc0dc89cb45b",
+      "usable_clips": 29,
+      "usable_hours": 0.06147,
+      "unique_sentences": 29
+    },
+    {
+      "speaker_id": "734d09292ff2e3956948751efe5d11c6531f341d03ebedac204496a9d8f7e6af7545468cb652906f2c4363f5d9a89ade78c5b827360814495654f47785a82abb",
+      "usable_clips": 26,
+      "usable_hours": 0.05846,
+      "unique_sentences": 26
+    },
+    {
+      "speaker_id": "8a09e33c4a49220a3a9dd7f36d07454d7639bdf373ee0c6003fa79e4f39c9071d5539b5a130c56c896a1da2b23b23fcb276efc7b3d812ed6bc0a40d0307d1bf1",
+      "usable_clips": 22,
+      "usable_hours": 0.05379,
+      "unique_sentences": 22
+    },
+    {
+      "speaker_id": "2e8f552fe31ef3fbee1a86bb60c733bd40a60874cac36f208af3e89040d7e3999fa33aa110481b011f6ffec3197e77409828b612d6b36a4b9ee3a994784a8d9a",
+      "usable_clips": 14,
+      "usable_hours": 0.04009,
+      "unique_sentences": 14
+    },
+    {
+      "speaker_id": "d9791eb7920b973ce113e443eb18e017f04d4182743086475060637c5bfdd1a3323442687d3aa574fdcb8f3912038665277f38839923c1981abaacd199b310bf",
+      "usable_clips": 10,
+      "usable_hours": 0.02422,
+      "unique_sentences": 10
+    }
+  ],
+  "limitations": [
+    "Speaker IDs are the anonymous Common Voice client_id; no re-identification was attempted or is supported by this audit.",
+    "Ranking reflects usable recorded duration only, not recording quality or consent for any form of identity- or voice-specific use."
+  ]
+}

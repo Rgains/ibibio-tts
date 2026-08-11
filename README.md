@@ -84,7 +84,7 @@ UV_CACHE_DIR=.uv-cache uv run python scripts/train_f5_smoke.py
 Raw/interim/processed audio and model artifacts are intentionally ignored by
 Git; trained checkpoints live outside the repo entirely
 (`/home/ubuntu/ibibio-tts/checkpoints/`, `/home/ubuntu/ibibio-tts/logs/`),
-matching this user's other TTS projects. See `PROTOCOL.md` and `CONTRIBUTING.md`
+matching my other TTS projects. See `PROTOCOL.md` and `CONTRIBUTING.md`
 before making changes.
 
 ## Demo

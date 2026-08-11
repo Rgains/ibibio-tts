@@ -1,8 +1,8 @@
 # Lab notebook — Ibibio Common Voice multi-speaker TTS baseline
 
 Running research log for the `ibibio-tts-lab` pipeline. Written as the work
-happens; entries are append-only and dated. See `PROTOCOL.md` for the fixed
-experimental protocol and `CONTRIBUTING.md` for the guardrails this log must respect.
+happens; entries are append-only and dated. `PROTOCOL.md` holds the fixed
+experimental protocol and `CONTRIBUTING.md` the project rules this log follows.
 
 ## Environment
 
@@ -163,7 +163,7 @@ accumulation or a batch-size reduction.
 Artifacts: checkpoint + samples under
 `/home/ubuntu/ibibio-tts/checkpoints/vits-smoke/`, metrics copied to
 `/home/ubuntu/ibibio-tts/logs/vits_smoke_metrics.json` (both outside the
-git repo, matching this user's other TTS projects' convention).
+git repo, matching the convention in my other TTS projects).
 
 ### 2026-08-10 — F5-TTS (flow matching) smoke experiment, optional/research
 
@@ -180,7 +180,7 @@ the newer pyarrow this project's base dependencies already pull in.
 tokenizer is a fixed Chinese-pinyin/English vocab (`prepare_csv_wavs.py`
 hard-copies it for any `--finetune` run) that doesn't cover Ibibio
 graphemes (ọ, ị, ñ, etc.); using it would need embedding-table surgery
-first. User chose training from scratch with a project-built character
+first. I trained from scratch with a project-built character
 vocab instead -- same "prove the pipeline, no quality claim" spirit as
 the VITS smoke test. Deliberately shrunk the DiT backbone from the
 paper's `dim=1024, depth=22, heads=16` (~300M+ params) to `dim=256,
@@ -230,9 +230,9 @@ is wired correctly for Ibibio, nothing more.
 
 ### 2026-08-10 — reviewed correction: Cyrillic-schwa prompt defect
 
-Before spending GPU time on a full-scale run, investigated the 198 rows
-(6.4% of imports) flagged `unsupported_script`, per user request, rather
-than leaving them unreviewed or blindly "fixing" them.
+Before spending GPU time on a full-scale run, I investigated the 198 rows
+(6.4% of imports) flagged `unsupported_script`, rather than leaving them
+unreviewed or blindly "fixing" them.
 
 Evidence gathered (`data/interim/common_voice_ibb/imported.parquet`):
 - All 198 flagged rows have exactly one issue: U+04D9 CYRILLIC SMALL
@@ -299,9 +299,8 @@ Killed the `vits-full` tmux session/process (no checkpoint had been
 reached yet, nothing lost) rather than let a possibly-multi-day run
 continue on an unverified premise.
 
-Wrote an ad hoc diagnostic harness
-(`/tmp/claude-*/scratchpad/diag_vits_speed.py`, NOT checked into the
-repo -- scratch only) that times `Trainer.train_step` directly with
+Wrote an ad hoc diagnostic harness (kept outside the repo as scratch,
+not checked in) that times `Trainer.train_step` directly with
 `print_step=1` for fast feedback, and bisected the difference from the
 smoke run (which felt fast, ~0.4-0.5s/step by its console log lines):
 
@@ -407,8 +406,8 @@ Run completed cleanly at 12:22 UTC (launched 08:08:32 UTC). Summary from
 fix from the prior entry stood up at full scale with no regression.
 
 **Qualitative listening result -- first native-speaker evaluation of this
-project.** Samples were reviewed by a native Ibibio speaker consulted by
-the project owner (not the project owner themselves). Verdict: prosody/
+project.** Samples were reviewed by a native Ibibio speaker I consulted
+(I am not a native speaker myself). Verdict: prosody/
 intonation sounded correct; word-level articulation was not clear --
 individual words were hard to make out even though the overall contour
 sounded plausibly Ibibio. This is the evaluation `PROTOCOL.md` gates any

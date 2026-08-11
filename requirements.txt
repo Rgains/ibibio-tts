@@ -8,8 +8,10 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
 # Install this project itself, so `import ibibio_tts` resolves: the package
-# lives under src/ and pip will not otherwise put it on the path.
-.
+# lives under src/ and pip will not otherwise put it on the path. Editable, so
+# a redeploy that pulls new code but skips reinstalling picks up the change --
+# a non-editable copy in site-packages goes stale and silently keeps running.
+-e .
 
 torch==2.8.0
 torchaudio==2.8.0

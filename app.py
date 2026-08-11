@@ -11,13 +11,19 @@ from __future__ import annotations
 
 import io
 import os
+import sys
 from pathlib import Path
 
 import numpy as np
 import soundfile as sf
 import streamlit as st
 
-from ibibio_tts.inference import (
+# Prefer this checkout's src/ over any copy already installed into
+# site-packages: a host that pulls new code without reinstalling would
+# otherwise keep running a stale build of ibibio_tts.
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+
+from ibibio_tts.inference import (  # noqa: E402
     allowed_characters,
     load_speaker_options,
     load_synthesizer,

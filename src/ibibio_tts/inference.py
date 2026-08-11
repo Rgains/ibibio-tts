@@ -86,9 +86,19 @@ def load_synthesizer(model_dir: Path) -> Any:
     coqui_cleaners.ibb_character_cleaner = ibb_character_cleaner
 
     config = json.loads((model_dir / "config.json").read_text(encoding="utf-8"))
-    # The trained config.json has the training box's absolute speakers_file
-    # path baked in; rewrite it to wherever this copy actually lives.
-    config["speakers_file"] = str(model_dir / "speakers.pth")
+    # The trained config.json has the training box's absolute speaker-file
+    # paths baked in; rewrite them to wherever this copy actually lives.
+    # Coqui reads these through get_from_config_or_model_args_with_default,
+    # which returns config["model_args"][key] in preference to config[key], so
+    # patching only the top level leaves the stale training path in effect.
+    speakers_path = str(model_dir / "speakers.pth")
+    for container in (config, config.get("model_args")):
+        if not isinstance(container, dict):
+            continue
+        for key in ("speakers_file", "speaker_file"):
+            if container.get(key):
+                container[key] = speakers_path
+    config["speakers_file"] = speakers_path
     runtime_config_path = model_dir / "config.runtime.json"
     runtime_config_path.write_text(json.dumps(config), encoding="utf-8")
 

@@ -17,3 +17,7 @@ __pycache__/
 model_export/
 config.runtime.json
 .streamlit/secrets.toml
+
+# Lockfile stays local: Streamlit Cloud prefers it over requirements.txt
+# and would install only the default dependency group.
+uv.lock

@@ -1,6 +1,16 @@
 # For Streamlit Community Cloud (pip, not uv) -- CPU-only inference.
 # Local training/demo dev should still use `uv sync --group demo`.
+#
+# uv.lock is deliberately not committed. Streamlit Cloud prefers a lockfile
+# over this file when both sit at the repository root, and syncing it installs
+# only the default dependency group -- which omits torch, coqui-tts, and
+# soundfile, so every third-party import in app.py fails.
 --extra-index-url https://download.pytorch.org/whl/cpu
+
+# Install this project itself, so `import ibibio_tts` resolves: the package
+# lives under src/ and pip will not otherwise put it on the path.
+.
+
 torch==2.8.0
 torchaudio==2.8.0
 coqui-tts==0.27.5

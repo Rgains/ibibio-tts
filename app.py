@@ -46,7 +46,7 @@ def _config(name: str, default: str = "") -> str:
 LOCAL_MODEL_DIR = Path(_config("IBB_TTS_LOCAL_MODEL_DIR", "model_export"))
 HF_MODEL_REPO = _config("HF_MODEL_REPO") or None
 HF_TOKEN = _config("HF_TOKEN") or None
-MAX_INPUT_CHARS = int(_config("IBB_TTS_MAX_CHARS", "300"))
+MAX_INPUT_CHARS = int(_config("IBB_TTS_MAX_CHARS", "150"))
 CPU_THREADS = int(_config("IBB_TTS_THREADS", "2"))
 
 
@@ -89,9 +89,12 @@ with st.form("synthesize"):
         options=speakers,
         format_func=lambda opt: f"{opt.label} ({opt.clip_count} training clips)",
     )
-    # VITS allocates in proportion to sequence length, and this app runs on a
-    # small shared CPU container. Cap the input so one long paste cannot
-    # exhaust memory for everyone using the demo.
+    # VITS allocates in proportion to sequence length, so the input length is
+    # a memory limit, not just a UX one. Measured on CPU with the stripped
+    # checkpoint: a loaded model sits near 1.3 GB, and synthesis adds roughly
+    # 230 MB plus 5.7 MB per character on top of that. At 200 characters the
+    # process peaks around 2.7 GB, which is the whole container budget, so the
+    # default cap is set well below where one long paste takes the demo down.
     text = st.text_area(
         "Ibibio text",
         value="Idịp ete ke imaidia se idiimaaha ke esie inaanam uyom nte esop mbakara.",

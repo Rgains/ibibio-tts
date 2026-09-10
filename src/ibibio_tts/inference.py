@@ -8,7 +8,6 @@ hash, consistent with `PROTOCOL.md`'s "never identify speakers" rule.
 from __future__ import annotations
 
 import json
-import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -41,8 +40,15 @@ def resolve_model_dir(local_dir: Path, hf_repo_id: str | None, hf_token: str | N
 
     local_dir.mkdir(parents=True, exist_ok=True)
     for name in MODEL_FILES:
-        downloaded = hf_hub_download(repo_id=hf_repo_id, filename=name, token=hf_token)
-        shutil.copy(downloaded, local_dir / name)
+        # Download straight into local_dir. Fetching into the Hub cache and
+        # copying afterwards leaves two full copies of a checkpoint on disk,
+        # which matters on a small container.
+        hf_hub_download(
+            repo_id=hf_repo_id,
+            filename=name,
+            token=hf_token,
+            local_dir=str(local_dir),
+        )
     return local_dir
 
 
@@ -69,14 +75,22 @@ def allowed_characters(model_dir: Path) -> set[str]:
     return allowed
 
 
-def load_synthesizer(model_dir: Path) -> Any:
+def load_synthesizer(model_dir: Path, cpu_threads: int | None = None) -> Any:
     """Load the trained VITS checkpoint for CPU inference.
 
     Imports `TTS`/`torch` lazily so the rest of this module stays importable
     (e.g. for `load_speaker_options`) without the heavy training deps.
+
+    `cpu_threads` caps the intra-op thread count: on a small shared container,
+    threads beyond the available cores add per-thread workspace buffers and
+    contend with each other instead of speeding synthesis up.
     """
+    import torch
     from TTS.api import TTS
     from TTS.tts.utils.text import cleaners as coqui_cleaners
+
+    if cpu_threads:
+        torch.set_num_threads(cpu_threads)
 
     def ibb_character_cleaner(text: str) -> str:
         return " ".join(text.split())

@@ -23,7 +23,7 @@ import streamlit as st
 # otherwise keep running a stale build of ibibio_tts.
 sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
-from ibibio_tts.inference import (  # noqa: E402
+from ibibio_tts.inference import (
     allowed_characters,
     load_speaker_options,
     load_synthesizer,
@@ -46,6 +46,8 @@ def _config(name: str, default: str = "") -> str:
 LOCAL_MODEL_DIR = Path(_config("IBB_TTS_LOCAL_MODEL_DIR", "model_export"))
 HF_MODEL_REPO = _config("HF_MODEL_REPO") or None
 HF_TOKEN = _config("HF_TOKEN") or None
+MAX_INPUT_CHARS = int(_config("IBB_TTS_MAX_CHARS", "300"))
+CPU_THREADS = int(_config("IBB_TTS_THREADS", "2"))
 
 
 @st.cache_resource(show_spinner="Loading model...")
@@ -55,7 +57,7 @@ def _load_model_dir() -> Path:
 
 @st.cache_resource(show_spinner="Loading Ibibio VITS checkpoint (CPU inference)...")
 def _load_tts(model_dir_str: str):
-    return load_synthesizer(Path(model_dir_str))
+    return load_synthesizer(Path(model_dir_str), cpu_threads=CPU_THREADS)
 
 
 st.title("Ibibio Common Voice TTS -- research demo")
@@ -87,10 +89,15 @@ with st.form("synthesize"):
         options=speakers,
         format_func=lambda opt: f"{opt.label} ({opt.clip_count} training clips)",
     )
+    # VITS allocates in proportion to sequence length, and this app runs on a
+    # small shared CPU container. Cap the input so one long paste cannot
+    # exhaust memory for everyone using the demo.
     text = st.text_area(
         "Ibibio text",
         value="Idịp ete ke imaidia se idiimaaha ke esie inaanam uyom nte esop mbakara.",
         height=100,
+        max_chars=MAX_INPUT_CHARS,
+        help=f"Up to {MAX_INPUT_CHARS} characters per synthesis.",
     )
     submitted = st.form_submit_button("Synthesize")
 
@@ -103,16 +110,23 @@ if submitted:
         )
     if not text.strip():
         st.error("Enter some Ibibio text first.")
+    elif len(text) > MAX_INPUT_CHARS:
+        st.error(
+            f"Keep the text at or below {MAX_INPUT_CHARS} characters "
+            f"({len(text)} given)."
+        )
     else:
         tts = _load_tts(str(model_dir))
         with st.spinner("Synthesizing..."):
             waveform, sample_rate = synthesize(tts, text, speaker_choice.speaker_name)
         buffer = io.BytesIO()
         sf.write(buffer, np.asarray(waveform, dtype=np.float32), sample_rate, format="WAV")
-        st.audio(buffer.getvalue(), format="audio/wav")
+        wav_bytes = buffer.getvalue()
+        buffer.close()
+        st.audio(wav_bytes, format="audio/wav")
         st.download_button(
             "Download WAV",
-            data=buffer.getvalue(),
+            data=wav_bytes,
             file_name="ibibio_tts_sample.wav",
             mime="audio/wav",
         )
